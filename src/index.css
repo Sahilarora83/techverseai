@@ -309,6 +309,18 @@ a {
   contain: layout paint;
 }
 
+.project-card-media {
+  background:
+    radial-gradient(circle at 28% 24%, rgba(242, 101, 34, 0.3), transparent 34%),
+    radial-gradient(circle at 76% 70%, rgba(0, 66, 189, 0.22), transparent 36%),
+    linear-gradient(135deg, #121827 0%, #070b13 100%);
+}
+
+.project-card-media video {
+  display: block;
+  background: transparent;
+}
+
 .footer-cta-card {
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   border-top: 1px solid rgba(255, 255, 255, 0.06);

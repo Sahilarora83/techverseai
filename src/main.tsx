@@ -351,7 +351,6 @@ function ServiceVisual({ type }: { type: "web" | "seo" | "cro" | "analytics" }) 
 
 function ProjectVideo({ src, title }: { src: string; title: string }) {
   const videoRef = React.useRef<HTMLVideoElement>(null);
-  const [isLoaded, setIsLoaded] = React.useState(false);
 
   React.useEffect(() => {
     const video = videoRef.current;
@@ -360,7 +359,6 @@ function ProjectVideo({ src, title }: { src: string; title: string }) {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setIsLoaded(true);
           void video.play().catch(() => undefined);
         } else {
           video.pause();
@@ -376,11 +374,11 @@ function ProjectVideo({ src, title }: { src: string; title: string }) {
   return (
     <video
       ref={videoRef}
-      src={isLoaded ? src : undefined}
+      src={src}
       muted
       loop
       playsInline
-      preload="none"
+      preload="metadata"
       aria-label={`${title} project preview`}
       className="h-full w-full object-cover"
     />
@@ -545,7 +543,7 @@ function CaseStudies() {
 function ProjectCard({ project }: { project: { title: string; label: string; description: string; video: string; buttonClassName: string; icon: React.ReactNode } }) {
   return (
     <article className="project-card">
-      <div className="group relative aspect-[329/246] cursor-pointer overflow-hidden rounded-2xl bg-[#1a1d2e]">
+      <div className="group project-card-media relative aspect-[329/246] cursor-pointer overflow-hidden rounded-2xl bg-[#1a1d2e]">
         <ProjectVideo src={project.video} title={project.title} />
         <button className={`absolute bottom-4 left-4 flex h-9 w-9 items-center justify-end overflow-hidden rounded-full px-[11px] transition-all duration-300 ease-in-out group-hover:w-[168px] group-hover:justify-between ${project.buttonClassName}`}>
           <span className="whitespace-nowrap text-[13px] font-medium opacity-0 transition-opacity delay-100 duration-300 group-hover:opacity-100">{project.label}</span>
