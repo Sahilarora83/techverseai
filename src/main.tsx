@@ -517,6 +517,41 @@ function ProjectCard({ project }: { project: { title: string; label: string; des
   );
 }
 
+function TeamSection() {
+  const members = [
+    { name: "Sujay Kumar", role: "Founder", initials: "SK" },
+    { name: "Sahil Sumrani", role: "Developer", initials: "SS" },
+  ];
+
+  return (
+    <section className="bg-white px-5 py-16 sm:px-8 lg:px-12 lg:py-20">
+      <div className="mx-auto flex max-w-[1100px] flex-col items-center">
+        <span className="mb-9 rounded-full bg-white px-5 py-2 text-[14px] font-medium leading-none text-[#536071] shadow-[0_8px_24px_rgba(15,23,42,0.12)] ring-1 ring-gray-100">
+          Our Team
+        </span>
+        <h2 className="mb-12 text-center text-[30px] font-normal leading-[1.375] tracking-[-0.025em] text-gray-950 sm:text-[48px] sm:leading-[66px]" style={{ fontFamily: "Arial, sans-serif" }}>
+          Team Behind Wonders
+        </h2>
+
+        <div className="grid w-full max-w-[720px] gap-7 sm:grid-cols-2">
+          {members.map((member) => (
+            <article key={member.name} className="group relative aspect-square overflow-hidden rounded-2xl bg-gradient-to-br from-[#eef2f7] via-white to-[#dfe6ef] shadow-md transition-all duration-500 hover:-translate-y-1 hover:shadow-2xl">
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(242,101,34,0.18),transparent_32%),radial-gradient(circle_at_76%_70%,rgba(0,66,189,0.14),transparent_34%)]" aria-hidden="true" />
+              <div className="relative flex h-full items-center justify-center pb-16">
+                <span className="text-[clamp(4rem,8vw,6.5rem)] font-semibold leading-none tracking-[-0.05em] text-gray-950/12">{member.initials}</span>
+              </div>
+              <div className="absolute inset-x-8 bottom-4 rounded-xl bg-white/88 px-5 py-4 text-center shadow-[0_10px_30px_rgba(15,23,42,0.14)] backdrop-blur">
+                <h3 className="text-[20px] font-semibold leading-6 text-gray-950">{member.name}</h3>
+                <p className="mt-1 text-[14px] font-medium uppercase leading-5 tracking-[0.04em] text-gray-600">{member.role}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function FAQSection() {
   const faqs = [
     {
@@ -661,6 +696,7 @@ function App() {
       <About />
       <Services />
       <CaseStudies />
+      <TeamSection />
       <Footer />
     </>
   );
