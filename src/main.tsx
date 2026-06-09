@@ -1,6 +1,6 @@
 ﻿import React from "react";
 import ReactDOM, { type Root } from "react-dom/client";
-import { ArrowRight, Menu, X } from "lucide-react";
+import { ArrowRight, ChevronDown, Menu, X } from "lucide-react";
 import lottie, { type AnimationItem } from "lottie-web";
 import { ChromaFlow, FilmGrain, FlutedGlass, Shader, Swirl } from "shaders/react";
 import analyticsAnimation from "./assets/services/analytics.json";
@@ -517,24 +517,65 @@ function ProjectCard({ project }: { project: { title: string; label: string; des
   );
 }
 
+function FAQSection() {
+  const faqs = [
+    {
+      question: "How long does it take to deliver a pre-built application or website?",
+      answer: "Most pre-built solutions can be prepared quickly once the content, branding, and required features are finalized.",
+    },
+    {
+      question: "Do you provide the complete source code after development?",
+      answer: "Yes. We hand over the agreed project files and source code after final delivery and payment completion.",
+    },
+    {
+      question: "What's the difference between a pre-built and a custom development project?",
+      answer: "Pre-built projects start from a ready foundation and move faster, while custom projects are designed around a unique workflow, feature set, and brand experience.",
+    },
+    {
+      question: "Do you provide maintenance and support after delivery?",
+      answer: "Yes, we provide 6 months of maintenance and support after project delivery. During this period, if there's any glitch, bug, or technical issue, our team will resolve it promptly at no extra cost.",
+    },
+    {
+      question: "What technologies do you use for development?",
+      answer: "We use modern web technologies selected around the project's needs, including React, Next.js, Node.js, scalable CMS setups, and reliable hosting platforms.",
+    },
+  ];
+  const [openIndex, setOpenIndex] = React.useState(3);
+
+  return (
+    <section className="faq-section overflow-hidden px-5 py-20 sm:px-8 lg:px-12 lg:py-28">
+      <div className="mx-auto grid max-w-[1400px] gap-10 lg:grid-cols-[0.82fr_1fr] lg:gap-20">
+        <h2 className="max-w-[520px] text-[clamp(3rem,4.6vw,5rem)] font-normal leading-[1.3] tracking-[-0.025em] text-gray-950">
+          Frequently Asked
+          <br />
+          Questions
+        </h2>
+
+        <div className="flex flex-col gap-5">
+          {faqs.map((faq, index) => {
+            const isOpen = openIndex === index;
+
+            return (
+              <article key={faq.question} className="rounded-lg bg-white shadow-[0_2px_8px_rgba(15,23,42,0.16)] ring-1 ring-gray-200">
+                <button type="button" onClick={() => setOpenIndex(isOpen ? -1 : index)} className="flex w-full items-center gap-4 px-5 py-5 text-left text-gray-950">
+                  <span className="h-7 w-1.5 shrink-0 rounded-full bg-gray-950" aria-hidden="true" />
+                  <span className="flex-1 text-[clamp(1rem,1.35vw,1.35rem)] font-medium leading-[1.35]">{faq.question}</span>
+                  <ChevronDown size={22} className={`shrink-0 transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`} aria-hidden="true" />
+                </button>
+                {isOpen ? <p className="px-5 pb-5 pl-[46px] text-[clamp(0.95rem,1.1vw,1.12rem)] leading-[1.55] text-gray-600">{faq.answer}</p> : null}
+              </article>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function Footer() {
   return (
     <footer className="overflow-hidden bg-[#070B12] text-white">
-      <div className="footer-cta-card relative flex min-h-[520px] w-full items-center justify-center overflow-hidden px-5 py-16 text-center shadow-[0_24px_80px_rgba(0,0,0,0.32)] sm:px-8 sm:py-20 lg:min-h-[620px] lg:py-24">
-        <div className="footer-cta-grid absolute inset-0 z-0" aria-hidden="true" />
-        <div className="relative z-10 mx-auto max-w-3xl">
-            <p className="mb-4 text-[12px] font-medium uppercase tracking-[0.18em] text-white/70">Ready to grow online?</p>
-            <h2 className="mx-auto max-w-2xl text-[clamp(2rem,4.5vw,4.6rem)] font-medium leading-[0.96] tracking-[-0.05em] text-white">
-              Upgrade your brand with digital experiences built to convert.
-            </h2>
-            <p className="mx-auto mt-5 max-w-lg text-[15px] leading-[1.6] text-white/72 sm:text-[17px]">
-              Schedule a strategy call and let's map the website, funnel, and content system your next stage needs.
-            </p>
-            <ArrowButton className="mx-auto mt-8 bg-white py-2 pl-5 pr-2 text-gray-950 hover:bg-orange-50 sm:pl-6" circleClassName="h-8 w-8 bg-[#F26522] text-white">
-              Let's Chat
-            </ArrowButton>
-        </div>
-      </div>
+      <FAQSection />
 
       <div className="footer-main-panel border-t border-white/10 bg-[#070B12] px-5 py-10 shadow-[0_-24px_70px_rgba(0,0,0,0.22)] sm:px-8 sm:py-12 lg:px-12 lg:py-16">
         <div className="mx-auto max-w-[1600px]">
