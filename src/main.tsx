@@ -447,6 +447,20 @@ function Services() {
   );
 }
 
+function BuildStrip() {
+  return (
+    <section className="bg-white py-8 sm:py-10">
+      <div className="build-strip overflow-hidden">
+        <div className="build-strip-track">
+          {[0, 1, 2].map((item) => (
+            <img key={item} src="/ai-build-strip.png" alt="Build with AI, scale with innovation, deliver with excellence" className="build-strip-image" />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function LinkGlyph() {
   return (
     <svg className="h-[14px] w-[14px] shrink-0 transition-transform duration-300 ease-in-out group-hover:rotate-0 -rotate-45" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -695,6 +709,7 @@ function App() {
       <LogoStrip />
       <About />
       <Services />
+      <BuildStrip />
       <CaseStudies />
       <TeamSection />
       <Footer />

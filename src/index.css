@@ -297,6 +297,26 @@ a {
   width: 100%;
 }
 
+.build-strip {
+  width: 100%;
+  background: #090909;
+}
+
+.build-strip-track {
+  display: flex;
+  width: max-content;
+  animation: build-strip-scroll 24s linear infinite;
+  will-change: transform;
+}
+
+.build-strip-image {
+  display: block;
+  height: clamp(72px, 7vw, 116px);
+  width: auto;
+  max-width: none;
+  flex: 0 0 auto;
+}
+
 .service-float-slow {
   animation: service-float-slow 7.5s cubic-bezier(0.45, 0, 0.2, 1) infinite;
 }
@@ -650,6 +670,16 @@ a {
   }
 }
 
+@keyframes build-strip-scroll {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-33.333%);
+  }
+}
+
 @media (max-width: 900px) {
   .hero-nav {
     border-radius: 999px;
@@ -678,6 +708,10 @@ a {
 
   .project-card {
     width: clamp(280px, 76vw, 420px);
+  }
+
+  .build-strip-track {
+    animation-duration: 30s;
   }
 
   .service-stack {
@@ -747,6 +781,10 @@ a {
   .brand-logo-word {
     width: 98px;
     font-size: 1.35rem;
+  }
+
+  .build-strip-image {
+    height: 64px;
   }
 
   .about-reveal-word {
