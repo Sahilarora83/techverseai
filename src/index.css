@@ -77,12 +77,34 @@ a {
 }
 
 .brand-marquee {
-  mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
 }
 
 .brand-marquee-track {
   width: max-content;
-  animation: brand-marquee-scroll 28s linear infinite;
+  gap: clamp(58px, 9vw, 150px);
+  padding-inline: clamp(28px, 6vw, 96px);
+  will-change: transform;
+}
+
+.brand-marquee-track-left {
+  animation: brand-marquee-left 34s linear infinite;
+}
+
+.brand-marquee-track-right {
+  animation: brand-marquee-right 34s linear infinite;
+}
+
+.brand-logo-word {
+  display: block;
+  width: clamp(112px, 11vw, 174px);
+  color: #111827;
+  font-size: clamp(1.25rem, 2.1vw, 2.45rem);
+  font-weight: 600;
+  line-height: 1;
+  text-align: center;
+  opacity: 0.18;
+  white-space: nowrap;
 }
 
 .hero-light-fallback {
@@ -129,13 +151,23 @@ a {
   transform: translate3d(0, 0, 0);
 }
 
-@keyframes brand-marquee-scroll {
+@keyframes brand-marquee-left {
   from {
     transform: translateX(0);
   }
 
   to {
     transform: translateX(-50%);
+  }
+}
+
+@keyframes brand-marquee-right {
+  from {
+    transform: translateX(-50%);
+  }
+
+  to {
+    transform: translateX(0);
   }
 }
 
@@ -670,6 +702,8 @@ a {
 
   .brand-marquee-track {
     animation-duration: 34s;
+    gap: clamp(44px, 9vw, 88px);
+    padding-inline: 28px;
   }
 
   .project-marquee {
@@ -755,12 +789,13 @@ a {
 
   .brand-marquee-track {
     animation-duration: 38s;
+    gap: 42px;
+    padding-inline: 20px;
   }
 
-  .brand-marquee-track > div {
-    min-width: 170px;
-    height: 64px;
-    padding-inline: 22px;
+  .brand-logo-word {
+    width: 98px;
+    font-size: 1.35rem;
   }
 
   .about-reveal-word {

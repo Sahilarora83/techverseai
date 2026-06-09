@@ -169,30 +169,34 @@ function Hero() {
 
 function LogoStrip() {
   const brands = [
-    { name: "Amazon", src: "https://cdn.simpleicons.org/amazon/111827" },
-    { name: "Flipkart", src: "https://cdn.simpleicons.org/flipkart/2874F0" },
-    { name: "Google", src: "https://cdn.simpleicons.org/google" },
-    { name: "Microsoft", src: "https://cdn.simpleicons.org/microsoft" },
-    { name: "Meta", src: "https://cdn.simpleicons.org/meta/0866FF" },
-    { name: "Netflix", src: "https://cdn.simpleicons.org/netflix/E50914" },
-    { name: "Shopify", src: "https://cdn.simpleicons.org/shopify/7AB55C" },
-    { name: "Adobe", src: "https://cdn.simpleicons.org/adobe/FF0000" },
+    "Amazon",
+    "Flipkart",
+    "Google",
+    "Microsoft",
+    "Meta",
+    "Netflix",
+    "Shopify",
+    "Adobe",
   ];
-  const marqueeBrands = [...brands, ...brands];
+  const topRowBrands = [...brands, ...brands, ...brands];
+  const bottomRowBrands = [...brands.slice(4), ...brands.slice(0, 4), ...brands, ...brands];
 
   return (
-    <div className="bg-white py-8 sm:py-10">
-      <div className="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-12">
-        <p className="mb-5 text-center text-[12px] font-medium uppercase tracking-[0.18em] text-gray-400">Trusted brand references</p>
-        <div className="brand-marquee overflow-hidden">
-          <div className="brand-marquee-track flex items-center gap-5 pr-5">
-            {marqueeBrands.map((brand, index) => (
-              <div key={`${brand.name}-${index}`} className="flex h-20 min-w-[210px] items-center justify-center gap-4 rounded-full border border-gray-100 bg-white px-7">
-                <img src={brand.src} alt={`${brand.name} logo`} className="h-9 w-9 object-contain sm:h-11 sm:w-11" />
-                <span className="text-[18px] font-semibold text-gray-800 sm:text-[20px]">{brand.name}</span>
-              </div>
-            ))}
-          </div>
+    <div className="bg-white py-9 sm:py-12">
+      <div className="brand-marquee overflow-hidden">
+        <div className="brand-marquee-track brand-marquee-track-left flex items-center">
+          {topRowBrands.map((brand, index) => (
+            <span key={`top-${brand}-${index}`} className="brand-logo-word">
+              {brand}
+            </span>
+          ))}
+        </div>
+        <div className="brand-marquee-track brand-marquee-track-right mt-8 flex items-center sm:mt-10">
+          {bottomRowBrands.map((brand, index) => (
+            <span key={`bottom-${brand}-${index}`} className="brand-logo-word">
+              {brand}
+            </span>
+          ))}
         </div>
       </div>
     </div>
