@@ -212,87 +212,43 @@ function SectionBadge({ number, label, border = "border-gray-200" }: { number: s
   );
 }
 
-function AboutRevealHeadline() {
-  const words = ["Strategy-led", "creatives,", "delivering", "results", "in", "digital", "and", "beyond."];
-  const [isRevealed, setIsRevealed] = React.useState(false);
-  const headingRef = React.useRef<HTMLHeadingElement>(null);
-
-  React.useEffect(() => {
-    const node = headingRef.current;
-    if (!node) return;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsRevealed(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.35, rootMargin: "0px 0px -12% 0px" },
-    );
-
-    observer.observe(node);
-    return () => observer.disconnect();
-  }, []);
-
-  return (
-    <h2
-      ref={headingRef}
-      aria-label="Strategy-led creatives, delivering results in digital and beyond."
-      className={`about-reveal-text mb-12 px-5 text-[clamp(1.5rem,4vw,3.2rem)] font-medium leading-[1.12] tracking-[-0.02em] text-gray-900 sm:mb-16 sm:px-8 lg:mb-28 lg:px-12 ${isRevealed ? "is-revealed" : ""}`}
-    >
-      {words.map((word, index) => (
-        <React.Fragment key={`${word}-${index}`}>
-          <span className="about-reveal-mask" aria-hidden="true">
-            <span className="about-reveal-word" style={{ "--word-index": index } as React.CSSProperties}>
-              {word}
-            </span>
-          </span>
-          {index === 2 ? <br className="hidden sm:block" /> : null}
-        </React.Fragment>
-      ))}
-    </h2>
-  );
-}
-
 function About() {
-  const smallImage = "https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260516_090123_74be96d4-9c1b-40cf-932a-96f4f4babed3.png&w=1280&q=85";
-  const largeImage = "https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260516_090133_c157d30b-a99a-4477-bec1-a446149ec3f2.png&w=1280&q=85";
+  const features = [
+    {
+      title: "Custom Development",
+      text: "Monitor your finances live with clear, intuitive dashboards.",
+      image: "https://www.futuredesks.com/home/features1.png",
+    },
+    {
+      title: "SaaS Prebuilt @ 50,000 /-",
+      text: "Monitor your finances live with clear, intuitive dashboards.",
+      image: "https://www.futuredesks.com/home/features2.png",
+    },
+  ];
 
   return (
-    <section className="overflow-hidden bg-white pb-12 pt-16 sm:pb-16 sm:pt-20 lg:pb-24 lg:pt-32">
+    <section className="overflow-hidden bg-white px-5 pb-16 pt-16 sm:px-8 sm:pb-20 sm:pt-20 lg:px-12 lg:pb-28 lg:pt-28">
       <div className="mx-auto max-w-[1440px]">
-        <SectionBadge number="1" label="Introducing Axion" />
-        <AboutRevealHeadline />
-
-        <div className="px-5 sm:px-8 lg:hidden">
-          <div className="mb-8 max-w-xl">
-            <p className="mb-6 text-[15px] font-medium leading-[1.6] text-gray-900">Through research, creative thinking and iteration we help growing brands realize their digital full potential.</p>
-            <ArrowButton className="bg-[#F26522] py-2 pl-5 pr-2 text-white hover:bg-[#e05a1a] sm:pl-6" circleClassName="h-7 w-7 bg-white text-[#F26522] sm:h-8 sm:w-8">
-              About our studio
-            </ArrowButton>
-          </div>
-          <div className="flex flex-col gap-4 sm:flex-row sm:gap-5">
-            <img src={smallImage} alt="Studio process" className="aspect-[438/346] w-full rounded-xl object-cover sm:w-[45%] sm:rounded-2xl" />
-            <img src={largeImage} alt="Creative studio work" className="aspect-[900/600] w-full rounded-xl object-cover sm:w-[55%] sm:rounded-2xl" />
-          </div>
+        <div className="mb-8 flex justify-center sm:mb-10">
+          <span className="rounded-full bg-white px-5 py-2 text-[14px] font-medium leading-none text-[#536071] shadow-[0_8px_24px_rgba(15,23,42,0.12)] ring-1 ring-gray-100">Features</span>
         </div>
 
-        <div className="hidden grid-cols-[26%_1fr_48%] items-end gap-6 px-12 lg:grid xl:gap-8">
-          <img src={smallImage} alt="Studio process" className="aspect-[438/346] w-full self-end rounded-2xl object-cover" />
-          <div className="flex self-start justify-end">
-            <div>
-              <p className="mb-7 whitespace-nowrap text-[16px] font-medium leading-[1.65] text-gray-900">
-                Through research, creative thinking and <br />
-                iteration we help growing brands realize <br />
-                their digital full potential.
-              </p>
-              <ArrowButton className="bg-[#F26522] py-2 pl-6 pr-2 text-white hover:bg-[#e05a1a]" circleClassName="h-8 w-8 bg-white text-[#F26522]">
-                About our studio
-              </ArrowButton>
-            </div>
-          </div>
-          <img src={largeImage} alt="Creative studio work" className="aspect-[3/2] w-full self-end rounded-2xl object-cover" />
+        <h2 className="mx-auto mb-12 max-w-[980px] text-center text-[clamp(2.1rem,4.5vw,4.9rem)] font-normal leading-[1.28] tracking-[-0.025em] text-[#111827] sm:mb-16">
+          Streamline Business with our
+          <br className="hidden sm:block" />
+          Flexible Options
+        </h2>
+
+        <div className="mx-auto grid max-w-[1320px] gap-6 md:grid-cols-2 lg:gap-28">
+          {features.map((feature) => (
+            <article key={feature.title} className="rounded-xl border border-gray-200 bg-white p-6 shadow-[0_2px_8px_rgba(15,23,42,0.06)] sm:p-8">
+              <div className="mx-auto mb-7 flex aspect-[479/347] w-full max-w-[480px] items-center justify-center overflow-hidden rounded-[20px] bg-[#f6f2de]">
+                <img src={feature.image} alt={feature.title} className="h-full w-full object-contain" />
+              </div>
+              <h3 className="mb-4 text-[clamp(1.55rem,2vw,2rem)] font-semibold leading-tight tracking-[-0.02em] text-gray-950">{feature.title}</h3>
+              <p className="text-[clamp(1rem,1.35vw,1.25rem)] leading-[1.45] text-gray-600">{feature.text}</p>
+            </article>
+          ))}
         </div>
       </div>
     </section>
