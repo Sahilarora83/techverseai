@@ -543,26 +543,26 @@ function FAQSection() {
   const [openIndex, setOpenIndex] = React.useState(3);
 
   return (
-    <section className="faq-section overflow-hidden px-5 py-20 sm:px-8 lg:px-12 lg:py-28">
-      <div className="mx-auto grid max-w-[1400px] gap-10 lg:grid-cols-[0.82fr_1fr] lg:gap-20">
-        <h2 className="max-w-[520px] text-[clamp(3rem,4.6vw,5rem)] font-normal leading-[1.3] tracking-[-0.025em] text-gray-950">
+    <section className="faq-section overflow-hidden px-4 py-16 font-sans sm:px-8">
+      <div className="mx-auto grid max-w-[1400px] gap-8 lg:grid-cols-[536px_536px] lg:justify-center lg:gap-[180px]">
+        <h2 className="max-w-[536px] text-[30px] font-normal leading-[1.375] tracking-[-0.025em] text-gray-950 sm:text-[48px] sm:leading-[66px]" style={{ fontFamily: "Arial, sans-serif" }}>
           Frequently Asked
           <br />
           Questions
         </h2>
 
-        <div className="flex flex-col gap-5">
+        <div className="flex w-full max-w-[536px] flex-col gap-5">
           {faqs.map((faq, index) => {
             const isOpen = openIndex === index;
 
             return (
               <article key={faq.question} className="rounded-lg bg-white shadow-[0_2px_8px_rgba(15,23,42,0.16)] ring-1 ring-gray-200">
-                <button type="button" onClick={() => setOpenIndex(isOpen ? -1 : index)} className="flex w-full items-center gap-4 px-5 py-5 text-left text-gray-950">
-                  <span className="h-7 w-1.5 shrink-0 rounded-full bg-gray-950" aria-hidden="true" />
-                  <span className="flex-1 text-[clamp(1rem,1.35vw,1.35rem)] font-medium leading-[1.35]">{faq.question}</span>
-                  <ChevronDown size={22} className={`shrink-0 transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`} aria-hidden="true" />
+                <button type="button" onClick={() => setOpenIndex(isOpen ? -1 : index)} className="flex w-full items-center gap-4 px-4 py-3 text-left text-gray-950">
+                  <span className="h-6 w-1 shrink-0 rounded-full bg-gray-950" aria-hidden="true" />
+                  <span className="flex-1 text-[16px] font-medium leading-6">{faq.question}</span>
+                  <ChevronDown size={18} className={`shrink-0 transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`} aria-hidden="true" />
                 </button>
-                {isOpen ? <p className="px-5 pb-5 pl-[46px] text-[clamp(0.95rem,1.1vw,1.12rem)] leading-[1.55] text-gray-600">{faq.answer}</p> : null}
+                {isOpen ? <p className="px-4 pb-5 pl-[40px] text-[15px] leading-[25px] text-gray-600 sm:text-[16px] sm:leading-[26px]">{faq.answer}</p> : null}
               </article>
             );
           })}
