@@ -3,7 +3,6 @@ import ReactDOM, { type Root } from "react-dom/client";
 import { ArrowRight, Menu, X } from "lucide-react";
 import lottie, { type AnimationItem } from "lottie-web";
 import { ChromaFlow, FilmGrain, FlutedGlass, Shader, Swirl } from "shaders/react";
-import { PrecisionSection } from "./components/PrecisionSection";
 import analyticsAnimation from "./assets/services/analytics.json";
 import croAnimation from "./assets/services/cro.json";
 import seoAnimation from "./assets/services/seo.json";
@@ -658,7 +657,6 @@ function App() {
       <LogoStrip />
       <About />
       <Services />
-      <PrecisionSection />
       <CaseStudies />
       <Footer />
     </>

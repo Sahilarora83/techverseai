@@ -286,7 +286,7 @@ a {
 .project-marquee-row {
   display: flex;
   width: max-content;
-  gap: clamp(20px, 2.2vw, 32px);
+  gap: clamp(18px, 1.8vw, 28px);
   padding-inline: clamp(20px, 4vw, 64px);
   will-change: transform;
 }
@@ -304,7 +304,7 @@ a {
 }
 
 .project-card {
-  width: clamp(320px, 43vw, 620px);
+  width: clamp(300px, 34vw, 500px);
   flex: 0 0 auto;
   contain: layout paint;
 }
