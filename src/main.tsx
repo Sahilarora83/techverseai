@@ -450,13 +450,7 @@ function Services() {
 function BuildStrip() {
   return (
     <section className="bg-white py-8 sm:py-10">
-      <div className="build-strip overflow-hidden">
-        <div className="build-strip-track">
-          {[0, 1, 2].map((item) => (
-            <img key={item} src="/ai-build-strip.png" alt="Build with AI, scale with innovation, deliver with excellence" className="build-strip-image" />
-          ))}
-        </div>
-      </div>
+      <div className="build-strip" role="img" aria-label="Build with AI, scale with innovation, deliver with excellence" />
     </section>
   );
 }

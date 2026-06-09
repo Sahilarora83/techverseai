@@ -299,22 +299,13 @@ a {
 
 .build-strip {
   width: 100%;
-  background: #090909;
-}
-
-.build-strip-track {
-  display: flex;
-  width: max-content;
-  animation: build-strip-scroll 24s linear infinite;
-  will-change: transform;
-}
-
-.build-strip-image {
-  display: block;
   height: clamp(72px, 7vw, 116px);
-  width: auto;
-  max-width: none;
-  flex: 0 0 auto;
+  background: #090909;
+  background-image: url("/ai-build-strip.png");
+  background-repeat: repeat-x;
+  background-size: auto 100%;
+  animation: build-strip-scroll 24s linear infinite;
+  will-change: background-position;
 }
 
 .service-float-slow {
@@ -672,11 +663,11 @@ a {
 
 @keyframes build-strip-scroll {
   from {
-    transform: translateX(0);
+    background-position-x: 0;
   }
 
   to {
-    transform: translateX(-33.333%);
+    background-position-x: -1984px;
   }
 }
 
@@ -710,7 +701,7 @@ a {
     width: clamp(280px, 76vw, 420px);
   }
 
-  .build-strip-track {
+  .build-strip {
     animation-duration: 30s;
   }
 
@@ -783,7 +774,7 @@ a {
     font-size: 1.35rem;
   }
 
-  .build-strip-image {
+  .build-strip {
     height: 64px;
   }
 
