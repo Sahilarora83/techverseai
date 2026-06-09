@@ -227,26 +227,28 @@ function About() {
   ];
 
   return (
-    <section className="overflow-hidden bg-white px-5 pb-16 pt-16 sm:px-8 sm:pb-20 sm:pt-20 lg:px-12 lg:pb-28 lg:pt-28">
-      <div className="mx-auto max-w-[1440px]">
+    <section className="overflow-hidden bg-white py-16">
+      <div className="mx-auto flex w-full flex-col items-center">
         <div className="mb-8 flex justify-center sm:mb-10">
           <span className="rounded-full bg-white px-5 py-2 text-[14px] font-medium leading-none text-[#536071] shadow-[0_8px_24px_rgba(15,23,42,0.12)] ring-1 ring-gray-100">Features</span>
         </div>
 
-        <h2 className="mx-auto mb-12 max-w-[980px] text-center text-[clamp(2.1rem,4.5vw,4.9rem)] font-normal leading-[1.28] tracking-[-0.025em] text-[#111827] sm:mb-16">
+        <h2 className="mx-auto mb-12 max-w-[760px] px-4 text-center text-[clamp(2.05rem,3.25vw,3.75rem)] font-normal leading-[1.28] tracking-[-0.025em] text-[#111827] sm:mb-14">
           Streamline Business with our
           <br className="hidden sm:block" />
           Flexible Options
         </h2>
 
-        <div className="mx-auto grid max-w-[1320px] gap-6 md:grid-cols-2 lg:gap-28">
+        <div className="grid w-full max-w-6xl grid-cols-1 justify-center gap-8 px-4 sm:grid-cols-2 sm:gap-10">
           {features.map((feature) => (
-            <article key={feature.title} className="rounded-xl border border-gray-200 bg-white p-6 shadow-[0_2px_8px_rgba(15,23,42,0.06)] sm:p-8">
-              <div className="mx-auto mb-7 flex aspect-[479/347] w-full max-w-[480px] items-center justify-center overflow-hidden rounded-[20px] bg-[#f6f2de]">
-                <img src={feature.image} alt={feature.title} className="h-full w-full object-contain" />
+            <article key={feature.title} className="mx-auto flex w-full max-w-[500px] flex-col items-center overflow-hidden rounded-xl bg-white p-4 shadow-sm ring-1 ring-gray-200 md:max-w-[465px]">
+              <div className="mb-4 flex h-[200px] w-full items-center justify-center overflow-hidden sm:h-[250px]">
+                <img src={feature.image} alt={feature.title} className="max-h-full max-w-full object-contain" />
               </div>
-              <h3 className="mb-4 text-[clamp(1.55rem,2vw,2rem)] font-semibold leading-tight tracking-[-0.02em] text-gray-950">{feature.title}</h3>
-              <p className="text-[clamp(1rem,1.35vw,1.25rem)] leading-[1.45] text-gray-600">{feature.text}</p>
+              <div className="w-full px-2">
+                <h3 className="mb-2 text-[18px] font-semibold leading-7 tracking-[-0.02em] text-gray-950 sm:text-[24px] sm:leading-8">{feature.title}</h3>
+                <p className="text-[14px] leading-[23px] text-gray-600 sm:leading-[26px]">{feature.text}</p>
+              </div>
             </article>
           ))}
         </div>
